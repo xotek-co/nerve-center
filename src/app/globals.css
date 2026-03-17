@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  /* Professional Clinical theme: Slate, Indigo, Emerald */
+  --nc-primary: 99 102 241; /* indigo-500 */
+  --nc-success: 16 185 129; /* emerald-500 */
+  --nc-surface: 248 250 252; /* slate-50 */
+  --nc-muted: 100 116 139; /* slate-400 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Clickable elements: pointer cursor on hover */
+button:not(:disabled),
+[role="button"],
+a[href],
+select:not(:disabled),
+label[for],
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+}
+button:disabled,
+select:disabled,
+input:disabled {
+  cursor: not-allowed;
+}
+
+/* Custom scrollbar for horizontal/vertical overflow */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(203 213 225) transparent;
+}
+.dark .scrollbar-thin {
+  scrollbar-color: rgb(71 85 105) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgb(203 213 225);
+  border-radius: 3px;
+}
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgb(71 85 105);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Investor report: only show #investor-report-print when printing */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #investor-report-print,
+  #investor-report-print * {
+    visibility: visible;
+  }
+  #investor-report-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: white;
+    color: #0f172a;
+  }
+}
