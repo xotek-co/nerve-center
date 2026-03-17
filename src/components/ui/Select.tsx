@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 type SelectOption = { value: string; label: string };
 
-const dropdownVariants = {
+const dropdownVariants: Variants = {
   closed: {
     opacity: 0,
     y: -8,
